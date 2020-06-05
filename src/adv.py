@@ -1,5 +1,6 @@
 from room import Room
-from player import player
+from player import Player
+import textwrap
 
 # Declare all the rooms
 
@@ -39,7 +40,8 @@ room['treasure'].connections["s"]  = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
-player = Player("Austin", room['outside'])
+my_player = Player("Austin", room['outside'])
+
 
 # Write a loop that:
 #
@@ -51,3 +53,14 @@ player = Player("Austin", room['outside'])
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
+user_is_playing = True
+
+while user_is_playing:
+    print(my_player.current_room.name)
+
+    for line in textwrap.wrap(my_player.current_room.description, 40):
+        print(line)
+    
+
+    user_is_playing = False
